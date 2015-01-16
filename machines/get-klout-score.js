@@ -1,11 +1,11 @@
 module.exports = {
-  friendlyName: 'Get Klout id',
-  description: 'Get the Klout Id from a Twitter screen name.',
+  friendlyName: 'Get Klout score',
+  description: 'Get the Klout score of a Klout Id.',
   extendedDescription: '',
   inputs: {
-    twitterScreenName: {
-      example: 'tuneyards',
-      description: 'The Twitter screen name of Klout Id',
+    kloutId: {
+      example: '32423423432342',
+      description: 'A Klout Id',
       required: true
     },
     apiKey: {
@@ -23,8 +23,8 @@ module.exports = {
       description: 'Invalid or unprovided API key. All calls must have a key.'
     },
     success: {
-      description: 'Returns a Klout ID.',
-      example: '234234239472379'
+      description: 'Returns the Klout score of a Klout ID.',
+      example: '54.342342332'
     }
   },
   fn: function(inputs, exits) {
@@ -35,7 +35,7 @@ module.exports = {
     var Http = require('machinepack-http');
 
     Http.sendHttpRequest({
-      baseUrl: 'http://api.klout.com/v2/identity.json/twitter?screenName=' + inputs.twitterScreenName + '&key=' + inputs.apiKey,
+      baseUrl: 'http://api.klout.com/v2/user.json/' + inputs.kloutId + '/score?key=' + inputs.apiKey,
       url: '',
       method: 'get',
     }).exec({
@@ -48,7 +48,7 @@ module.exports = {
           return exits.error('An error occurred while parsing the body.');
         }
 
-        return exits.success(responseBody.id);
+        return exits.success(responseBody.score);
 
       },
       // Non-2xx status code returned from server
@@ -61,6 +61,8 @@ module.exports = {
         } catch (e) {
           return exits.error(e);
         }
+
+        return exits.error(result);
 
       },
       // An unexpected error occurred.

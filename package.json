@@ -24,8 +24,8 @@
     "friendlyName": "Klout",
     "machineDir": "machines/",
     "machines": [
-      "say-hello",
-      "get-klout-id"
+      "get-klout-id",
+      "get-klout-score"
     ]
   }
 }
