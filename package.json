@@ -1,0 +1,31 @@
+{
+  "name": "machinepack-klout",
+  "version": "0.1.0",
+  "description": "Communicate with the Klout API to get Ids, Klout Scores, etc.",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha -b"
+  },
+  "keywords": [
+    "Klout",
+    "machines",
+    "machinepack"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "machine": "^1.1.0",
+    "machinepack-http": "^0.2.3",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  },
+  "machinepack": {
+    "friendlyName": "Klout",
+    "machineDir": "machines/",
+    "machines": [
+      "say-hello",
+      "get-klout-id"
+    ]
+  }
+}
