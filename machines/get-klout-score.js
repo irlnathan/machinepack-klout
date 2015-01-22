@@ -5,7 +5,7 @@ module.exports = {
   inputs: {
     kloutId: {
       example: '32423423432342',
-      description: 'A Klout Id',
+      description: 'A Klout Id.',
       required: true
     },
     apiKey: {
